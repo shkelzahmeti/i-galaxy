@@ -1,0 +1,51 @@
+.item {
+  width: 30rem;
+}
+
+.item-image {
+  width: 100%;
+  padding: 2rem;
+  background-color: #f5f5f7;
+  border: 1px solid #e1e1e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.item-image img {
+  max-width: 100%;
+  max-height: 30rem;
+  width: 26rem;
+  height: 26rem;
+  display: block;
+  object-fit: contain;
+}
+
+.item p {
+  margin: 0.6rem 0rem;
+  font-size: 1.6rem;
+}
+
+.item-prices {
+  display: flex;
+  gap: 2rem;
+}
+
+.item-price-new {
+  color: #373737;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.item-price-old {
+  color: #8c8c8c;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+
+.item:hover {
+  transform: scale(1.05);
+  transition: 0.6s;
+}

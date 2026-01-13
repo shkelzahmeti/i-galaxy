@@ -1,0 +1,102 @@
+.section-navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.6rem;
+  box-shadow: 0 1px 3px -2px black;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo img {
+  width: 6.4rem;
+  height: 6.4rem;
+}
+
+.nav-logo p {
+  color: #171717;
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 5rem;
+  color: #606060;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.nav-menu li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* For React Links <Link> */
+.nav-menu a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-menu hr {
+  border: none;
+  width: 90%;
+  margin-right: 10%;
+  margin-top: 5%;
+  height: 0.3rem;
+  border-radius: 10px;
+  background: #ff4141;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: grow 0.3s ease forwards;
+}
+
+@keyframes grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.nav-login-cart {
+  display: flex;
+  align-items: center;
+  gap: 4.5rem;
+}
+
+.nav-login-cart button {
+  width: 15rem;
+  height: 6rem;
+  outline: none;
+  border: 1px solid #7a7a7a;
+  border-radius: 30px;
+  font-size: 2rem;
+  font-weight: 500;
+  background: white;
+  cursor: pointer;
+}
+
+.nav-login-cart button:active {
+  background: #f3f3f3;
+}
+
+.nav-cart-count {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -3.5rem;
+  margin-left: -5.5rem;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  background: red;
+  color: white;
+}
