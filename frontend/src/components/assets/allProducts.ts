@@ -10,7 +10,7 @@ import p9_img from "./product_1.png";
 import p10_img from "./product_1.png";
 import p11_img from "./product_1.png";
 import p12_img from "./product_1.png";
-import p13_img from "./product_13.png";
+import p13_img from "./product_36.png";
 import p14_img from "./product_36.png";
 import p15_img from "./product_36.png";
 import p16_img from "./product_36.png";

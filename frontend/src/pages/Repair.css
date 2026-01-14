@@ -1,0 +1,63 @@
+.section-repair {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 3.75rem;
+  height: 100vh;
+  margin-top: 3rem;
+}
+
+.repair-text {
+  /* text-align: left; */
+  /* max-width: 25rem;
+  justify-self: center; */
+  grid-column: 2/4;
+}
+
+.repair-text h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #888;
+  margin-bottom: 1.25rem;
+}
+
+.repair-text span {
+  color: #ff4141;
+}
+
+.repair-text p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #333;
+  margin-top: 0;
+}
+
+.repair-text p span {
+  font-weight: 700;
+  color: #ff7e5f;
+}
+
+.repair-button {
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  background-color: #ff4141;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.repair-button:hover {
+  background-color: #e03a3a; /* darker red */
+  transform: translateY(-0.125rem); /* subtle lift */
+}
+
+.cracked-phone {
+  grid-column: 4/-1;
+}

@@ -1,12 +1,9 @@
+import type { Product } from "../../types/product";
 import "./Item.css";
 
-interface ItemProps {
-  id: number;
-  image: string;
-  name: string;
-  newPrice: number | string;
-  oldPrice: number | string;
-}
+type ItemProps = Product;
+// type ItemProps = Omit<Product, "id">;
+
 // Random item/card/phone that will be used in other components
 function Item({ image, name, newPrice, oldPrice }: ItemProps) {
   return (

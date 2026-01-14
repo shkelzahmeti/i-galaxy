@@ -1,7 +1,7 @@
 // This will be our Homepage
 
 import Hero from "../components/hero/Hero";
-import NewCollections from "../components/new-collections/newCollections";
+import NewCollections from "../components/new-collections/NewCollections";
 import NewsLetter from "../components/newsletter/NewsLetter";
 import Offers from "../components/offers/Offers";
 import Popular from "../components/popular/Popular";
