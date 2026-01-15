@@ -1,14 +1,14 @@
-import "./NewCollections.css";
-import newCollections from "../assets/newCollections";
+import "./RelatedProducts.css";
+import dataProducts from "../assets/dataProducts";
 import Item from "../item/Item";
 
-function NewCollections() {
+function RelatedProducts() {
   return (
-    <section className="section-new-collections">
-      <h2>NEW COLLECTIONS</h2>
+    <div className="related-products">
+      <h2>Related Products</h2>
       <hr />
-      <div className="collections">
-        {newCollections.map((item, i) => {
+      <div className="related-products-item">
+        {dataProducts.map((item, i) => {
           return (
             <Item
               key={i}
@@ -22,8 +22,8 @@ function NewCollections() {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }
 
-export default NewCollections;
+export default RelatedProducts;

@@ -36,3 +36,17 @@
   row-gap: 8rem;
   column-gap: 2rem;
 }
+
+.shopcategory-loadmore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6rem auto;
+  width: 23rem;
+  height: 7rem;
+  border-radius: 75px;
+  background: #efefef;
+  color: #787878;
+  font-size: 1.8rem;
+  font-weight: 500;
+}

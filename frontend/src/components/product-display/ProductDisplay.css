@@ -1,0 +1,139 @@
+.section-product-display {
+  display: flex;
+  margin: 0 16rem;
+  margin-bottom: 8rem;
+}
+
+.product-display-left {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.product-display-img-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.product-display-img-list img {
+  height: 14rem;
+}
+
+.product-display-img {
+  width: 55rem;
+  height: 70rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-display-main-img {
+  height: 55rem;
+}
+
+/* ----------- */
+
+.product-display-right {
+  margin: 0 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-display-right h2 {
+  color: #3d3d3d;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.product-display-right-stars {
+  display: flex;
+  align-items: center;
+  margin-top: 1.4rem;
+  gap: 5px;
+  color: #444444;
+}
+
+.product-display-right-prices {
+  display: flex;
+  max-width: 4rem 0;
+  gap: 3rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-top: 1.4rem;
+}
+
+.product-display-right-price-old {
+  color: #808080;
+  text-decoration: line-through;
+}
+
+.product-display-right-price-new {
+  color: #ff4040;
+}
+
+.product-display-right-description {
+  color: #444444;
+  font-size: 1.3rem;
+  margin-top: 1.4rem;
+}
+
+.product-display-right-color h2 {
+  margin-top: 5.5rem;
+  color: #666666;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.product-display-right-colors {
+  display: flex;
+  margin: 3rem 0;
+  gap: 2rem;
+}
+
+.product-display-right-colors div {
+  padding: 1.8rem 2.4rem;
+  background: #fbfbfb;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.product-display-right-colors div:first-child {
+  background-color: rgba(85, 85, 85, 0.8);
+  color: #ffffff;
+}
+
+.product-display-right-colors div:nth-child(2) {
+  background-color: rgba(240, 240, 240, 0.8);
+  color: #333333;
+}
+
+.product-display-right-colors div:nth-child(3) {
+  background-color: rgba(211, 211, 211, 0.8);
+  color: #333333;
+}
+
+.product-display-right-colors div:nth-child(4) {
+  background-color: rgba(184, 184, 184, 0.8);
+  color: #222222;
+}
+
+.product-display-right-colors div:last-child {
+  background-color: rgba(255, 217, 166, 0.8);
+  color: #5a3700;
+}
+
+.product-display-right button {
+  padding: 2rem 4rem;
+  width: 20rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
+  background: #ff4040;
+  margin-bottom: 4rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

@@ -1,7 +1,7 @@
 /// This component will be used for `iphone` and `galaxy` pages
 
 import { useContext, type JSX } from "react";
-import "./ShopCategory.css";
+import "./css/ShopCategory.css";
 import { ShopContext } from "../context/ShopContextProvider";
 import dropdown_icon from "../components/assets/dropdown_icon.png";
 import Item from "../components/item/Item";
@@ -46,6 +46,7 @@ function ShopCategory({ category, banner }: ShopCategoryProps): JSX.Element {
           }
         })}
       </div>
+      <div className="shopcategory-loadmore">Explore more</div>
     </section>
   );
 }

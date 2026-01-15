@@ -15,6 +15,7 @@ function Popular() {
               id={item.id}
               image={item.image}
               name={item.name}
+              category={item.category}
               newPrice={item.newPrice}
               oldPrice={item.oldPrice}
             />

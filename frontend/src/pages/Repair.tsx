@@ -1,8 +1,8 @@
 import React from "react";
-import CrackedScreen from "../components/repair/CrackedScreen";
+import CrackedScreen from "../components/cracked-screen/CrackedScreen";
 import phoneImg from "../components/assets/product_36.png";
 import cracksImg from "../components/assets/cracks.png";
-import "./Repair.css";
+import "./css/Repair.css";
 
 function Repair() {
   return (
