@@ -1,0 +1,9 @@
+.section-admin {
+  display: flex;
+}
+
+@media (max-width: 50em) {
+  .section-admin {
+    flex-direction: column;
+  }
+}

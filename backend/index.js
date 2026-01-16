@@ -47,7 +47,7 @@ app.use("/images", express.static("upload/images"));
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    imageUrl: `http://localhost:${port}/images/${req.file.fileName}`,
+    imageUrl: `http://localhost:${port}/images/${req.file.filename}`,
   });
 });
 
@@ -102,14 +102,14 @@ app.post("/addproduct", async (req, res) => {
     image: req.body.image,
     category: req.body.category,
     newPrice: req.body.newPrice,
-    oldPrice: request.body.oldPrice,
+    oldPrice: req.body.oldPrice,
   });
   console.log(product);
   await product.save();
   console.log("Saved");
-  response.json({
+  res.json({
     success: true,
-    name: request.body.name,
+    name: req.body.name,
   });
 });
 

@@ -1,0 +1,33 @@
+.section-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 6rem;
+  box-shadow: 0 1px 3px -2px #000;
+  margin-bottom: 0.1rem;
+  background: white;
+}
+
+.nav-logo {
+  width: 20rem;
+}
+
+.nav-profile {
+  width: 7.5rem;
+}
+
+/* ------ MEDIA QUERIES ------ */
+
+@media (max-width: 50em) {
+  .section-navbar {
+    padding: 1.5rem 3rem;
+  }
+
+  .nav-logo {
+    width: 15rem;
+  }
+
+  .nav-profile {
+    width: 6rem;
+  }
+}
