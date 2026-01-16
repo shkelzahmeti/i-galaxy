@@ -9,7 +9,7 @@ interface ProductDisplayProps {
   product: Product | undefined;
 }
 function ProductDisplay({ product }: ProductDisplayProps) {
-  const { addToCart } = useContext(ShopContext);
+  const { addToCart } = useContext(ShopContext)!;
   return (
     <section className="section-product-display">
       <div className="product-display-left">
@@ -68,7 +68,8 @@ function ProductDisplay({ product }: ProductDisplayProps) {
         {/* --------------- */}
         <button
           onClick={() => {
-            addToCart(product?.id);
+            if (!product) return;
+            addToCart(product.id);
           }}
         >
           ADD TO CART

@@ -12,6 +12,8 @@ type ShopContextType = {
   };
   addToCart: (itemId: number) => void;
   removeFromCart: (itemId: number) => void;
+  getTotalCartAmount: () => number;
+  getTotalCartItems: () => number;
 };
 
 export const ShopContext = createContext<ShopContextType | null>(null);
@@ -34,7 +36,7 @@ const getDefaultCart = () => {
 
 function ShopContextProvider({ children }: ShopContextProviderProps) {
   const [cartItems, setCartItems] = useState<Cart>(getDefaultCart());
-  console.log(cartItems); // key is representing our product id, and the value will represent the number of items added for that product id
+  console.log(cartItems);
 
   const addToCart = (itemId: number): void => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -46,12 +48,23 @@ function ShopContextProvider({ children }: ShopContextProviderProps) {
     console.log(cartItems);
   };
 
+  const getTotalCartAmount = () =>
+    Object.entries(cartItems).reduce((total, [id, quantity]) => {
+      const product = allProducts.find((p) => p.id === Number(id));
+      return product ? total + product.newPrice * quantity : total;
+    }, 0);
+
+  const getTotalCartItems = () =>
+    Object.values(cartItems).reduce((total, quantity) => total + quantity, 0);
+
   // Here I exported values to consume (in `Product` and `ProductDisplay`)
   const contextValue: ShopContextType = {
     allProducts,
     cartItems,
     addToCart,
     removeFromCart,
+    getTotalCartAmount,
+    getTotalCartItems,
   };
   return (
     <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>

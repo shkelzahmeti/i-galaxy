@@ -28,7 +28,7 @@ function App() {
             element={<ShopCategory category="galaxy" banner={men_banner} />}
           />
           <Route path="/repair" element={<Repair />} />
-          <Route path="product" element={<Product />}>
+          <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
