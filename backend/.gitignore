@@ -1,1 +1,21 @@
-node_modules
+
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# TypeScript build output
+dist/
+
+# Uploads (user-generated files)
+upload/
+upload/images/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
