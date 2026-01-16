@@ -1,5 +1,6 @@
 .section-admin {
   display: flex;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 50em) {

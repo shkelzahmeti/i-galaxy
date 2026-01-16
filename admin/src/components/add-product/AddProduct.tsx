@@ -10,15 +10,17 @@ interface ProductDetails {
   oldPrice: string | number;
 }
 
+const initialState = {
+  name: "",
+  image: "",
+  category: "iphone",
+  newPrice: "",
+  oldPrice: "",
+};
+
 function AddProduct() {
   const [image, setImage] = useState<File | null>(null);
-  const [products, setProducts] = useState<ProductDetails>({
-    name: "",
-    image: "",
-    category: "iphone",
-    newPrice: "",
-    oldPrice: "",
-  });
+  const [products, setProducts] = useState<ProductDetails>(initialState);
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>): void => {
     // console.log(e.target.files);
@@ -42,11 +44,11 @@ function AddProduct() {
     e.preventDefault();
     console.log(products);
 
-    // I ADDED THIS(CHECK LATER)
-    // const { image: _, ...requiredFields } = products;
-    // if (Object.values(requiredFields).some((val) => val === "") || !image) {
-    //   return alert("Please fill all fields and select an image");
-    // }
+    // VALIDATION:
+    const { image: _, ...requiredFields } = products;
+    if (Object.values(requiredFields).some((val) => val === "") || !image) {
+      return alert("Please fill the fields and select your smartphone image");
+    }
 
     // Here I linked this `AddProduct` Page with my Backend
 
@@ -67,10 +69,10 @@ function AddProduct() {
       .then((data) => {
         responseData = data;
       });
+
     if (responseData.success) {
       product.image = responseData.imageUrl;
       console.log(product);
-      //-----
       await fetch("http://localhost:4000/addproduct", {
         method: "POST",
         headers: {
@@ -81,8 +83,11 @@ function AddProduct() {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.success) alert("Product added");
-          else alert("Failed");
+          if (data.success) {
+            setProducts(initialState);
+            setImage(null);
+            alert("Product added");
+          } else alert("Failed");
         });
     }
   };
@@ -91,6 +96,12 @@ function AddProduct() {
   // const handleAddProduct = async (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
   //   console.log(products);
+
+  // VALIDATION:
+  // const { image: _, ...requiredFields } = products;
+  // if (Object.values(requiredFields).some((val) => val === "") || !image) {
+  //   return alert("Please fill the fields and select your smartphone image");
+  // }
 
   //   // Here I linked this `AddProduct` Page with my Backend
 
