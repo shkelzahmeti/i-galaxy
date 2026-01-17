@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import "./css/Product.css";
 import { ShopContext } from "../context/ShopContextProvider";
 import type { Product } from "../types/product";
 import { useParams } from "react-router-dom";

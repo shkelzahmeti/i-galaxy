@@ -30,15 +30,16 @@
   gap: 5rem;
   color: #252525;
   font-size: 2rem;
-}
-
-.footer-links {
   cursor: pointer;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-social-icons {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-icons-container {
@@ -69,5 +70,125 @@
   border: none;
   border-radius: 10px;
   height: 0.3rem;
-  background-repeat: #c7c7c7;
+  background-color: #c7c7c7;
+}
+
+/* Up to 1280px */
+@media (max-width: 80em) {
+  .footer-logo img {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .footer-logo p {
+    font-size: 4rem;
+  }
+
+  .footer-links {
+    gap: 4rem;
+    font-size: 1.8rem;
+  }
+
+  .footer-icons-container img {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .footer-copyright {
+    font-size: 1.8rem;
+  }
+}
+
+/* Up to 1024px */
+@media (max-width: 64em) {
+  .footer-logo img {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .footer-logo p {
+    font-size: 3.5rem;
+  }
+
+  .footer-links {
+    gap: 3rem;
+    font-size: 1.6rem;
+  }
+
+  .footer-icons-container img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .footer-copyright {
+    font-size: 1.6rem;
+  }
+}
+
+/* Up to 800px */
+@media (max-width: 50em) {
+  .footer-logo {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-logo img {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .footer-logo p {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .footer-social-icons {
+    gap: 1.5rem;
+  }
+
+  .footer-icons-container img {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .footer-copyright {
+    font-size: 1.4rem;
+  }
+}
+
+/* Up to 500px */
+@media (max-width: 31.25em) {
+  .footer-logo img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .footer-logo p {
+    font-size: 2.4rem;
+  }
+
+  .footer-links {
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .footer-social-icons {
+    gap: 1rem;
+  }
+
+  .footer-icons-container img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .footer-copyright {
+    font-size: 1.2rem;
+  }
 }

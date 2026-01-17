@@ -1,3 +1,7 @@
+/* ================================
+   NEW SMARTPHONES SECTION
+================================ */
+
 .section-new-smartphones {
   display: flex;
   flex-direction: column;
@@ -6,12 +10,14 @@
   margin-bottom: 11rem;
 }
 
+/* Section title */
 .section-new-smartphones h2 {
   color: #161616;
   font-size: 4rem;
   font-weight: 600;
 }
 
+/* Divider */
 .section-new-smartphones hr {
   width: 30rem;
   height: 0.6rem;
@@ -19,9 +25,137 @@
   background: #232323;
 }
 
+/* ================================
+   GRID
+================================ */
+
 .smartphones {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-top: 5rem;
+  grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
+  margin-top: 5rem;
+}
+
+/* Each card */
+.smartphones > * {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Image wrapper control */
+.smartphones > * img {
+  width: 100%;
+  height: auto;
+  max-width: 260px;
+  object-fit: contain;
+}
+
+/* ================================
+   MEDIA QUERIES
+================================ */
+
+/* ≤ 1280px */
+@media (max-width: 80em) {
+  .section-new-smartphones h2 {
+    font-size: 3.5rem;
+  }
+
+  .section-new-smartphones hr {
+    width: 16rem;
+    height: 0.4rem;
+  }
+
+  .smartphones {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .smartphones > * img {
+    max-width: 230px;
+  }
+}
+
+/* ≤ 1024px */
+@media (max-width: 64em) {
+  .section-new-smartphones h2 {
+    font-size: 3rem;
+  }
+
+  .section-new-smartphones hr {
+    width: 12rem;
+    height: 0.3rem;
+  }
+
+  .smartphones {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .smartphones > * img {
+    max-width: 200px;
+  }
+
+  .smartphones h3 {
+    font-size: 1.6rem;
+  }
+
+  .smartphones p,
+  .smartphones span {
+    font-size: 1.3rem;
+  }
+}
+
+/* ≤ 800px */
+@media (max-width: 50em) {
+  .section-new-smartphones {
+    gap: 1.2rem;
+  }
+
+  .section-new-smartphones h2 {
+    font-size: 2.4rem;
+  }
+
+  .section-new-smartphones hr {
+    width: 8rem;
+  }
+
+  .smartphones {
+    gap: 1.5rem;
+  }
+
+  .smartphones > * img {
+    max-width: 170px;
+  }
+
+  .smartphones h3 {
+    font-size: 1.4rem;
+  }
+
+  .smartphones p,
+  .smartphones span {
+    font-size: 1.2rem;
+  }
+}
+
+/* ≤ 500px */
+@media (max-width: 31.25em) {
+  .smartphones {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  .smartphones > * img {
+    max-width: 140px;
+  }
+
+  .smartphones h3 {
+    font-size: 1.2rem;
+  }
+
+  .smartphones p,
+  .smartphones span {
+    font-size: 1.1rem;
+  }
 }

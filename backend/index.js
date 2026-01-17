@@ -230,6 +230,3 @@ app.get("/popular", async (req, res) => {
 // RUN THE SERVER:
 // Type `node .\index.js` in Terminal to Run the Server,
 // then on Browser: `localhost:4000`
-
-// USING THESE ENDPOINTS WE'LL CREATE THE ADMIN PANEL
-// FOR OUR WEBSITE.

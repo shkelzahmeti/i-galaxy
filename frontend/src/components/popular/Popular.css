@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 10rem;
+  margin-bottom: 12rem;
 }
 
 .section-popular h2 {
@@ -23,4 +23,87 @@
   margin-top: 5rem;
   display: flex;
   gap: 3rem;
+}
+
+/* ---- MEDIA QUERIES ---- */
+
+/* Up to 1280px */
+@media (max-width: 80em) {
+  .section-popular {
+    height: 70vh;
+    margin-bottom: 2rem;
+  }
+
+  .section-popular h2 {
+    font-size: 4rem;
+  }
+
+  .section-popular hr {
+    width: 16rem;
+    height: 0.4rem;
+  }
+
+  .popular-item {
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+}
+
+/* Up to 1024px */
+@media (max-width: 64em) {
+  .section-popular {
+    height: 60vh;
+  }
+
+  .section-popular h2 {
+    font-size: 3rem;
+  }
+
+  .section-popular hr {
+    width: 12rem;
+    height: 0.3rem;
+  }
+
+  .popular-item {
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+/* Up to 800px */
+@media (max-width: 50em) {
+  .section-popular {
+    height: 100%;
+    gap: 0.6rem;
+    margin-bottom: 8rem;
+  }
+
+  .section-popular h2 {
+    font-size: 2rem;
+  }
+
+  .section-popular hr {
+    width: 1rem;
+  }
+
+  .popular-item {
+    gap: 0.5rem;
+  }
+}
+
+/* Up to 500px */
+@media (max-width: 31.25em) {
+  .section-popular {
+    height: 100%;
+  }
+
+  .popular-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .popular-item > * {
+    width: 100%;
+  }
 }

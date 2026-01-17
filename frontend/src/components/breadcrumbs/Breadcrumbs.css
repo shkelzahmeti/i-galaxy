@@ -8,3 +8,28 @@
   margin: 6rem 16rem;
   text-transform: capitalize;
 }
+
+/* Up to 1024px */
+@media (max-width: 64em) {
+  .breadcrumb {
+    margin: 4rem 8rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Up to 800px */
+@media (max-width: 50em) {
+  .breadcrumb {
+    margin: 3rem 4rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* Up to 500px */
+@media (max-width: 31.25em) {
+  .breadcrumb {
+    margin: 2rem 1.5rem;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+  }
+}

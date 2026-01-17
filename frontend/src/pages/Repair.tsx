@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CrackedScreen from "../components/cracked-screen/CrackedScreen";
 import phoneImg from "../components/assets/product_36.png";
 import cracksImg from "../components/assets/cracks.png";
 import "./css/Repair.css";
 
 function Repair() {
+  const [phoneSize, setPhoneSize] = useState({ width: 260, height: 480 });
+
+  // React-friendly way to update phone size on resize
+  useEffect(() => {
+    const updateSize = () => {
+      const vw = window.innerWidth;
+      if (vw < 500) {
+        setPhoneSize({ width: 140, height: 280 });
+      } else if (vw < 800) {
+        setPhoneSize({ width: 220, height: 400 });
+      } else {
+        setPhoneSize({ width: 260, height: 480 });
+      }
+    };
+
+    updateSize(); // initial size
+    window.addEventListener("resize", updateSize); // listens safely
+    return () => window.removeEventListener("resize", updateSize); // cleanup
+  }, []);
+
   return (
     <section className="section-repair">
       <div className="repair-text">
@@ -21,8 +41,8 @@ function Repair() {
       </div>
       <div className="cracked-phone">
         <CrackedScreen
-          width={260}
-          height={480}
+          width={phoneSize.width}
+          height={phoneSize.height}
           image={phoneImg}
           crackedSvg={cracksImg}
           startPercent={0.1}

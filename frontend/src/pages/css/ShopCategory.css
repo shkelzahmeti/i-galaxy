@@ -4,13 +4,13 @@
 
 .shopcategory-banner {
   display: block;
-  margin: 3rem auto;
-  width: 80%;
+  margin: 8rem auto;
+  height: 20rem;
 }
 
 .shopcategory-index-sort {
   display: flex;
-  margin: 0 18rem;
+  margin: 4rem 18rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -49,4 +49,97 @@
   color: #787878;
   font-size: 1.8rem;
   font-weight: 500;
+}
+
+/* ---- MEDIA QUERIES ---- */
+
+/* Up to 1280px */
+@media (max-width: 80em) {
+  .shopcategory-index-sort {
+    margin: 0 10rem;
+  }
+  .shopcategory-products {
+    margin: 2rem 10rem;
+  }
+}
+
+/* Up to 1024px */
+@media (max-width: 64em) {
+  .shopcategory-index-sort {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 0 5rem;
+  }
+  .shopcategory-products {
+    margin: 2rem 5rem;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 6rem;
+    column-gap: 1.5rem;
+  }
+  .shopcategory-banner {
+    margin: 5rem auto;
+    height: 18rem;
+  }
+}
+
+/* Up to 800px */
+@media (max-width: 50em) {
+  .shopcategory-banner {
+    margin: 5rem auto;
+    height: 16rem;
+
+    padding-left: 2rem;
+  }
+  .shopcategory-index-sort {
+    margin: 0 2rem;
+  }
+  .shopcategory-products {
+    margin: 2rem 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    row-gap: 5rem;
+    column-gap: 1rem;
+  }
+  .shopcategory-sort {
+    font-size: 1.3rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .shopcategory-index-sort p {
+    font-size: 1.3rem;
+  }
+  .shopcategory-loadmore {
+    width: 20rem;
+    height: 6rem;
+    font-size: 1.6rem;
+  }
+}
+
+/* Up to 500px */
+@media (max-width: 31.25em) {
+  .shopcategory-index-sort {
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+  .shopcategory-products {
+    grid-template-columns: 1fr;
+    margin: 2rem 1rem;
+    row-gap: 4rem;
+  }
+  .shopcategory-sort {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+  .shopcategory-index-sort p {
+    font-size: 1.2rem;
+  }
+  .shopcategory-banner {
+    height: 12rem;
+  }
+  .shopcategory-loadmore {
+    width: 18rem;
+    height: 5.5rem;
+    font-size: 1.4rem;
+  }
 }

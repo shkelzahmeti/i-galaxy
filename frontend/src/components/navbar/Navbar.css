@@ -100,3 +100,79 @@
   background: red;
   color: white;
 }
+
+/* ---- MEDIA QUERIES ---- */
+
+/* Up to 1280px */
+@media (max-width: 80em) {
+  .section-navbar {
+    padding: 1.2rem 5rem;
+  }
+  .nav-logo img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .nav-logo p {
+    font-size: 2.5rem;
+  }
+  .nav-menu {
+    gap: 3rem;
+    font-size: 1.6rem;
+  }
+  .nav-login-cart {
+    gap: 3rem;
+  }
+  .nav-login-cart button {
+    width: 12rem;
+    height: 4.5rem;
+  }
+  .nav-cart-count {
+    margin-left: -4rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Up to 1024px */
+@media (max-width: 64em) {
+  .section-navbar {
+    padding: 1.2rem 3rem;
+  }
+  .nav-menu {
+    gap: 2.5rem;
+    font-size: 1.4rem;
+  }
+  .nav-login-cart button {
+    width: 8rem;
+    height: 3.5rem;
+    font-size: 1.4rem;
+  }
+  .nav-login-cart img {
+    width: 3rem;
+  }
+  .nav-cart-count {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+/* Up to 800px */
+@media (max-width: 50em) {
+  .section-navbar {
+    padding: 1rem 0;
+  }
+}
+
+/* Up to 500px */
+@media (max-width: 31.25em) {
+  .section-navbar {
+    width: 0.8rem 0;
+    gap: 0;
+  }
+  .nav-menu {
+    /* height: 2rem; */
+    gap: 1rem;
+  }
+  .nav-login-cart {
+    transform: scale(0.8);
+  }
+}

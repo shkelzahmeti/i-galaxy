@@ -50,7 +50,9 @@
   text-decoration: none;
   border-radius: 0.5rem;
   margin-top: 1.5rem;
-  transition: background 0.3s, transform 0.2s;
+  transition:
+    background 0.3s,
+    transform 0.2s;
 }
 
 .repair-button:hover {
@@ -60,4 +62,80 @@
 
 .cracked-phone {
   grid-column: 4/-1;
+}
+
+/* Up to 1024px */
+@media (max-width: 64em) {
+  .section-repair {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3rem;
+  }
+
+  .repair-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .repair-text p {
+    font-size: 1.3rem;
+  }
+
+  .cracked-phone {
+    grid-column: 4/-1;
+  }
+}
+
+/* Up to 800px */
+@media (max-width: 50em) {
+  .section-repair {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6rem;
+  }
+
+  .repair-text {
+    grid-column: 1/-1;
+    text-align: center;
+  }
+
+  .repair-text h2 {
+    font-size: 2rem;
+  }
+
+  .repair-text p {
+    font-size: 1.2rem;
+  }
+
+  .cracked-phone {
+    grid-column: 1/-1;
+    width: 70%; /* smaller phone */
+    margin: 0 auto;
+  }
+}
+
+/* Up to 500px */
+@media (max-width: 31.25em) {
+  .section-repair {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+    height: auto;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+
+  .repair-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .repair-text p {
+    font-size: 1rem;
+  }
+
+  .repair-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .cracked-phone {
+    width: 90%;
+    margin: 0 auto;
+  }
 }

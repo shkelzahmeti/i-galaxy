@@ -32,3 +32,87 @@
   padding: 4.8rem;
   padding-bottom: 7rem;
 }
+
+/* ---- DESCRIPTION BOX MEDIA QUERIES ---- */
+
+/* Up to 1280px */
+@media (max-width: 80em) {
+  .description-box {
+    margin: 6rem 10rem;
+  }
+
+  .description-box-nav-box {
+    width: 15rem;
+    height: 6.5rem;
+    font-size: 1.5rem;
+  }
+
+  .description-box-description {
+    font-size: 1.4rem;
+    padding: 4rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Up to 1024px */
+@media (max-width: 64em) {
+  .description-box {
+    margin: 5rem 5rem;
+  }
+
+  .description-box-navigator {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .description-box-nav-box {
+    width: 14rem;
+    height: 6rem;
+    font-size: 1.4rem;
+  }
+
+  .description-box-description {
+    padding: 3.5rem;
+    padding-bottom: 5.5rem;
+    font-size: 1.3rem;
+  }
+}
+
+/* Up to 800px */
+@media (max-width: 50em) {
+  .description-box {
+    margin: 4rem 3rem;
+  }
+
+  .description-box-nav-box {
+    width: 12rem;
+    height: 5.5rem;
+    font-size: 1.3rem;
+  }
+
+  .description-box-description {
+    padding: 3rem;
+    padding-bottom: 5rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Up to 500px */
+@media (max-width: 31.25em) {
+  .description-box {
+    margin: 3rem 1.5rem;
+  }
+
+  .description-box-nav-box {
+    width: 100%;
+    min-width: 0;
+    height: 5rem;
+    font-size: 1.2rem;
+  }
+
+  .description-box-description {
+    padding: 2rem;
+    padding-bottom: 4rem;
+    font-size: 1.1rem;
+  }
+}

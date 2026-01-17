@@ -7,8 +7,8 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import LoginSignup from "./pages/LoginSignup";
 import Footer from "./components/footer/Footer";
-import men_banner from "./components/assets/banner_mens.png";
-import women_banner from "./components/assets/banner_women.png";
+import banner_galaxy from "./components/assets/banner_galaxy.png";
+import banner_iphone from "./components/assets/banner_iphone.png";
 import Repair from "./pages/Repair";
 
 function App() {
@@ -21,11 +21,11 @@ function App() {
           <Route path="/" element={<Shop />} />
           <Route
             path="/iphones"
-            element={<ShopCategory category="iphone" banner={women_banner} />}
+            element={<ShopCategory category="iphone" banner={banner_iphone} />}
           />
           <Route
             path="/galaxies"
-            element={<ShopCategory category="galaxy" banner={men_banner} />}
+            element={<ShopCategory category="galaxy" banner={banner_galaxy} />}
           />
           <Route path="/repair" element={<Repair />} />
           <Route path="/product" element={<Product />}>
