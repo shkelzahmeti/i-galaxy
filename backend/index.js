@@ -127,6 +127,88 @@ app.get("/allproducts", async (req, res) => {
   res.send(products);
 });
 
+//////////////////// Creating Endpoints for User /////////////////
+
+const Users = mongoose.model("Users", {
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+    unique: true,
+  },
+  password: {
+    type: String,
+  },
+  cartData: {
+    type: Object,
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+// Creating Endpoint for User Signup:
+app.post("/signup", async (req, res) => {
+  const check = await Users.findOne({ email: req.body.email });
+  if (check) {
+    return res.status(400).json({
+      success: false,
+      errors: "User with that email already exists",
+    });
+  }
+  const cart = {};
+  for (let i = 0; i < 300; i++) {
+    cart[i] = 0;
+  }
+  const user = new Users({
+    name: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    cartData: cart,
+  });
+
+  await user.save();
+
+  const data = {
+    user: {
+      id: user.id,
+    },
+  };
+
+  const token = jwt.sign(data, "secretStore");
+
+  res.json({ success: true, token });
+});
+
+// Creating Endpoint for User Login:
+app.post("/login", async (req, res) => {
+  const user = await Users.findOne({ email: req.body.email });
+  if (user) {
+    const passCompare = req.body.password === user.password;
+    if (passCompare) {
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const token = jwt.sign(data, "secretStore");
+      res.json({ success: true, token });
+    } else {
+      res.json({
+        success: false,
+        errors: "Wrong password",
+      });
+    }
+  } else {
+    res.json({
+      success: false,
+      errors: "Wrong Email Address",
+    });
+  }
+});
+
 // RUN THE SERVER:
 // Type `node .\index.js` in Terminal to Run the Server,
 // then on Browser: `localhost:4000`
