@@ -9,16 +9,17 @@ interface FormData {
   email: string;
 }
 
-const initialForm: FormData = {
-  userName: "",
-  password: "",
-  email: "",
-};
 interface SignupResponse {
   success: boolean;
   token: string;
   errors: string;
 }
+
+const initialForm: FormData = {
+  userName: "",
+  password: "",
+  email: "",
+};
 
 function LoginSignup() {
   const [state, setState] = useState<string>("Login");
@@ -30,11 +31,9 @@ function LoginSignup() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSignup = async () => {
-    console.log("Login function executed", formData);
-
+  const handleSignupLogin = async (endPoint: string) => {
     let responseData!: SignupResponse;
-    await fetch("http://localhost:4000/signup", {
+    await fetch(`http://localhost:4000/${endPoint}`, {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -56,8 +55,14 @@ function LoginSignup() {
     }
   };
 
-  const handleLogin = async () => {
+  const handleSignup = () => {
+    console.log("Login function executed", formData);
+    handleSignupLogin("signup");
+  };
+
+  const handleLogin = () => {
     console.log("Signup function executed", formData);
+    handleSignupLogin("login");
   };
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
