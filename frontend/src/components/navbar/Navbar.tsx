@@ -4,10 +4,13 @@ import cart_icon from "../assets/cart_icon.png";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContextProvider";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Navbar() {
   const [menu, setMenu] = useState("shop");
-  const { getTotalCartItems } = useContext(ShopContext);
+  const { getTotalCartItems } = useContext(ShopContext)!;
+  const navigate = useNavigate();
   return (
     <section className="section-navbar">
       <div className="nav-logo">
@@ -30,9 +33,21 @@ function Navbar() {
         </li>
       </nav>
       <div className="nav-login-cart">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+        {localStorage.getItem("auth-token") ? (
+          <button
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              navigate("/");
+              toast.success("You've logged out");
+            }}
+          >
+            Log Out
+          </button>
+        ) : (
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        )}
         <Link to="/cart">
           <img src={cart_icon} alt="" />
         </Link>

@@ -1,8 +1,8 @@
 // Here we'll provide `ShopContext` data to all pages,
 // by wrapping later the `App` with `<ShopContextProvider` in `main.tsx`
 
-import { createContext, useState, type ReactNode } from "react";
-import allProducts from "../components/assets/allProducts";
+import { createContext, useEffect, useState, type ReactNode } from "react";
+// import allProducts from "../components/assets/allProducts";
 import type { Product } from "../types/product";
 
 type ShopContextType = {
@@ -28,20 +28,30 @@ interface Cart {
 }
 const getDefaultCart = () => {
   const cart: Cart = {};
-  for (let i = 0; i < allProducts.length + 1; i++) {
+  for (let i = 0; i < 300; i++) {
     cart[i] = 0;
   }
   return cart;
 };
 
 function ShopContextProvider({ children }: ShopContextProviderProps) {
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Cart>(getDefaultCart());
   console.log(cartItems);
 
+  // Added last:
+  useEffect(() => {
+    fetch("http://localhost:4000/allproducts")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllProducts(data);
+      });
+  }, []);
+
   const addToCart = (itemId: number): void => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    console.log(cartItems);
     // We'll use these quantities to create our `Cart` page
+    console.log(cartItems);
   };
   const removeFromCart = (itemId: number): void => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));

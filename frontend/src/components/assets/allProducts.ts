@@ -35,7 +35,7 @@ import p34_img from "./product_36.png";
 import p35_img from "./product_36.png";
 import p36_img from "./product_36.png";
 
-let allProducts = [
+const allProducts = [
   // iPhones
   {
     id: 1,

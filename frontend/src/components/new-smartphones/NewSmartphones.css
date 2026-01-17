@@ -1,4 +1,4 @@
-.section-new-collections {
+.section-new-smartphones {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,20 +6,20 @@
   margin-bottom: 11rem;
 }
 
-.section-new-collections h2 {
+.section-new-smartphones h2 {
   color: #161616;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 600;
 }
 
-.section-new-collections hr {
+.section-new-smartphones hr {
   width: 30rem;
   height: 0.6rem;
   border-radius: 10px;
   background: #232323;
 }
 
-.collections {
+.smartphones {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 5rem;

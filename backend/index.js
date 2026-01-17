@@ -209,6 +209,24 @@ app.post("/login", async (req, res) => {
   }
 });
 
+// Creating Endpoint for NewSmartphones Data:
+app.get("/newsmartphones", async (req, res) => {
+  const products = await Product.find({});
+  const newSmartphones = products.slice(1).slice(-8);
+  console.log("New Smartphones Fetched ");
+  res.send(newSmartphones);
+});
+
+// Creating Endpoint for Popular:
+app.get("/popular", async (req, res) => {
+  const products = await Product.find({
+    category: "iphone",
+  });
+  const popular = products.slice(0, 4);
+  console.log("Popular Fetched");
+  res.send(popular);
+});
+
 // RUN THE SERVER:
 // Type `node .\index.js` in Terminal to Run the Server,
 // then on Browser: `localhost:4000`

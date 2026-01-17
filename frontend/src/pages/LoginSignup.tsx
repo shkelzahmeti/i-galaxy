@@ -31,7 +31,13 @@ function LoginSignup() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSignupLogin = async (endPoint: string) => {
+  const handleSignupLogin = async (endPoint: "login" | "signup") => {
+    // Validation
+    if (!formData.email || !formData.password)
+      return alert("Email and password are required");
+    if (endPoint === "signup" && !formData.userName)
+      return alert("Username is required");
+
     let responseData!: SignupResponse;
     await fetch(`http://localhost:4000/${endPoint}`, {
       method: "POST",
@@ -48,7 +54,9 @@ function LoginSignup() {
 
     if (responseData.success) {
       localStorage.setItem("auth-token", responseData.token);
-      toast.success("You've signed up successfully");
+      toast.success(
+        `You've ${endPoint === "login" ? "logged in" : "signed up"} successfully`,
+      );
       navigate("/");
     } else {
       toast.error(responseData.errors);

@@ -3,7 +3,7 @@ import p2_img from "./product_1.png";
 import p35_img from "./product_36.png";
 import p36_img from "./product_36.png";
 
-let dataProducts = [
+const dataProducts = [
   {
     id: 1,
     name: "iPhone 15 Pro Max 256GB",

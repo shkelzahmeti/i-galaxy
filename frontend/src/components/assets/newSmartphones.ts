@@ -7,7 +7,7 @@ import p18_img from "./product_36.png";
 import p24_img from "./product_36.png";
 import p11_img from "./product_1.png";
 
-let newCollections = [
+const newSmartphones = [
   {
     id: 3,
     name: "iPhone 15 256GB",
@@ -74,4 +74,4 @@ let newCollections = [
   },
 ];
 
-export default newCollections;
+export default newSmartphones;

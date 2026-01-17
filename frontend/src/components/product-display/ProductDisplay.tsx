@@ -4,6 +4,7 @@ import star_icon from "../assets/star_icon.png";
 import star_dull_icon from "../assets/star_dull_icon.png";
 import { useContext } from "react";
 import { ShopContext } from "../../context/ShopContextProvider";
+import { toast } from "react-toastify";
 
 interface ProductDisplayProps {
   product: Product | undefined;
@@ -70,6 +71,7 @@ function ProductDisplay({ product }: ProductDisplayProps) {
           onClick={() => {
             if (!product) return;
             addToCart(product.id);
+            toast.success("Product added to cart");
           }}
         >
           ADD TO CART

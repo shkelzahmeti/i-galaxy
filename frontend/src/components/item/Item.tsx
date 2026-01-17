@@ -15,13 +15,13 @@ function Item({ id, image, name, newPrice, oldPrice }: ItemProps) {
           <img
             src={image}
             alt=""
-            onClick={() =>
+            onClick={() => {
               window.scrollTo({
                 top: 0,
                 left: 0,
                 // behavior: "auto",
-              })
-            }
+              });
+            }}
           />
         </Link>
       </div>
