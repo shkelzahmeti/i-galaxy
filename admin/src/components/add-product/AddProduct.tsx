@@ -1,6 +1,7 @@
 import "./AddProduct.css";
 import uploadArea from "../assets/upload_area.svg";
-import { useState, type ChangeEvent } from "react";
+import { useState, useRef, type ChangeEvent } from "react";
+import { toast } from "react-toastify";
 
 interface ProductDetails {
   name: string;
@@ -20,6 +21,7 @@ const initialState = {
 
 function AddProduct() {
   const [image, setImage] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [products, setProducts] = useState<ProductDetails>(initialState);
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -30,7 +32,7 @@ function AddProduct() {
   };
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ): void => {
     setProducts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -86,65 +88,17 @@ function AddProduct() {
           if (data.success) {
             setProducts(initialState);
             setImage(null);
-            alert("Product added");
-          } else alert("Failed");
+            if (fileInputRef.current) {
+              fileInputRef.current.value = "";
+            }
+            // alert("Product added");
+            toast.success("Your product has been added");
+          } else
+            // alert("Failed");
+            toast.error("Failed to add product");
         });
     }
   };
-
-  //Async await:
-  // const handleAddProduct = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   console.log(products);
-
-  // VALIDATION:
-  // const { image: _, ...requiredFields } = products;
-  // if (Object.values(requiredFields).some((val) => val === "") || !image) {
-  //   return alert("Please fill the fields and select your smartphone image");
-  // }
-
-  //   // Here I linked this `AddProduct` Page with my Backend
-
-  //   if (!image) return console.error("No image selected");
-
-  //   const product = { ...products };
-  //   const formData = new FormData();
-  //   formData.append("product", image);
-
-  //   // 1. Uploading image to backend
-  //   const uploadRes = await fetch("http://localhost:4000/upload", {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //     },
-  //     body: formData,
-  //   });
-
-  //   const responseData: UploadResponse = await uploadRes.json();
-
-  //   if (responseData.success) {
-  //     product.image = responseData.imageUrl;
-  //     console.log(product);
-
-  //     // 2. Adding product to database
-  //     const addRes = await fetch("http://localhost:4000/addproduct", {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(product),
-  //     });
-
-  //     const data = await addRes.json();
-
-  //     if (data.success) {
-  //       alert("Product added");
-  //     } else {
-  //       alert("Failed");
-  //     }
-  //   }
-  // };
 
   return (
     <form
@@ -210,6 +164,7 @@ function AddProduct() {
           />
         </label>
         <input
+          ref={fileInputRef}
           onChange={handleImage}
           type="file"
           name="image"

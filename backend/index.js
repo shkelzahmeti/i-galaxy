@@ -13,7 +13,7 @@ app.use(cors());
 //Database connection with MongoDB:
 
 mongoose.connect(
-  "mongodb+srv://imshkelz_db_user:8Rsv3Sej3I5hnOzI@cluster0.rbjwb9d.mongodb.net/i-galaxy"
+  "mongodb+srv://imshkelz_db_user:8Rsv3Sej3I5hnOzI@cluster0.rbjwb9d.mongodb.net/i-galaxy",
 );
 
 //API Creation
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     return cb(
       null,
-      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
+      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`,
     );
   },
 });
@@ -114,7 +114,7 @@ app.post("/addproduct", async (req, res) => {
 });
 
 // Creating API for Deleting Products:
-app.post("/removeproduct", async (req, res) => {
+app.post("/remove", async (req, res) => {
   await Product.findOneAndDelete({ id: req.body.id });
   console.log("Removed");
   res.json({ success: true, name: req.body.name });

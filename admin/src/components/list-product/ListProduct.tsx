@@ -1,8 +1,11 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import "./ListProduct.css";
 import crossIcon from "../assets/cross_icon.png";
+import { toast } from "react-toastify";
 
 interface Product {
+  id: number;
   name: string;
   image: string;
   category: string;
@@ -25,6 +28,19 @@ function ListProduct() {
     fetchData();
   }, []);
 
+  const handleRemoveProduct = async (id: number) => {
+    await fetch("http://localhost:4000/remove", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: id }),
+    });
+    toast.success("Product deleted");
+    await fetchData();
+  };
+
   return (
     <section className="section-list-product">
       <h2>All Products</h2>
@@ -39,26 +55,26 @@ function ListProduct() {
 
       <div className="list-product-all-products">
         <hr />
-        {allProducts.map((product, i) => {
+        {allProducts.map((product) => {
           return (
-            <>
-              <div
-                key={i}
-                className="list-product-format-main list-product-format"
-              >
+            <React.Fragment key={product.id}>
+              <div className="list-product-format-main list-product-format">
                 <img className="list-product-icon" src={product.image} alt="" />
                 <p>{product.name}</p>
                 <p>${product.oldPrice}</p>
                 <p>${product.newPrice}</p>
                 <p>{product.category}</p>
                 <img
+                  onClick={() => {
+                    handleRemoveProduct(product.id);
+                  }}
                   className="list-product-remove-icon"
                   src={crossIcon}
                   alt=""
                 />
               </div>
               <hr />
-            </>
+            </React.Fragment>
           );
         })}
       </div>
