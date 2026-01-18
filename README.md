@@ -1,7 +1,7 @@
 # iGalaxy 🌌📱
 
 Welcome to **iGalaxy**, your one-stop hub for buying iPhones and exploring galaxies!  
-Whether you’re a tech enthusiast looking for the latest Apple devices or a space fan with a fascination for the cosmos, iGalaxy brings the best of both worlds right to your fingertips.
+iGalaxy brings the best of both worlds right to your fingertips.
 
 ---
 

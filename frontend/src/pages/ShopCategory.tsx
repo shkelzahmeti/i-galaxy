@@ -1,24 +1,29 @@
 /// This component will be used for `iphone` and `galaxy` pages
 
-import { useContext, useState, type JSX } from "react";
+import { useContext, type JSX } from "react";
 import "./css/ShopCategory.css";
 import { ShopContext } from "../context/ShopContextProvider";
-import dropdown_icon from "../components/assets/dropdown_icon.png";
+// import dropdown_icon from "../components/assets/dropdown_icon.png";
 import Item from "../components/item/Item";
 import type { Product } from "../types/product";
 
 interface ShopCategoryProps {
   category: string;
   banner: string;
+  sortType: "name" | "priceHigh" | "priceLow";
+  setSortType: React.Dispatch<
+    React.SetStateAction<"name" | "priceHigh" | "priceLow">
+  >;
 }
 
-function ShopCategory({ category, banner }: ShopCategoryProps): JSX.Element {
+function ShopCategory({
+  category,
+  banner,
+  sortType,
+  setSortType,
+}: ShopCategoryProps): JSX.Element {
   // Using data from the context
   const { allProducts } = useContext(ShopContext)!;
-
-  const [sortType, setSortType] = useState<"name" | "priceHigh" | "priceLow">(
-    "name",
-  );
 
   const filteredProducts = allProducts.filter(
     (item) => item.category === category,

@@ -10,8 +10,13 @@ import Footer from "./components/footer/Footer";
 import banner_galaxy from "./components/assets/banner_galaxy.png";
 import banner_iphone from "./components/assets/banner_iphone.png";
 import Repair from "./pages/Repair";
+import { useState } from "react";
 
 function App() {
+  const [sortType, setSortType] = useState<"name" | "priceHigh" | "priceLow">(
+    "name",
+  );
+
   return (
     <div>
       <BrowserRouter>
@@ -21,11 +26,25 @@ function App() {
           <Route path="/" element={<Shop />} />
           <Route
             path="/iphones"
-            element={<ShopCategory category="iphone" banner={banner_iphone} />}
+            element={
+              <ShopCategory
+                category="iphone"
+                banner={banner_iphone}
+                sortType={sortType}
+                setSortType={setSortType}
+              />
+            }
           />
           <Route
             path="/galaxies"
-            element={<ShopCategory category="galaxy" banner={banner_galaxy} />}
+            element={
+              <ShopCategory
+                category="galaxy"
+                banner={banner_galaxy}
+                sortType={sortType}
+                setSortType={setSortType}
+              />
+            }
           />
           <Route path="/repair" element={<Repair />} />
           <Route path="/product" element={<Product />}>
