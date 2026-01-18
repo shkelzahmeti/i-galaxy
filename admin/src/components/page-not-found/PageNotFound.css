@@ -1,0 +1,100 @@
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem;
+  min-height: 70vh;
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.page-not-found h2 {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+
+.page-not-found p {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  background-color: #807f7f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #5f5f5f;
+}
+
+/* ---- MEDIA QUERIES ---- */
+
+/* Up to 1280px (80em) */
+@media (max-width: 80em) {
+  .page-not-found h2 {
+    font-size: 5.5rem;
+  }
+  .page-not-found p {
+    font-size: 1.6rem;
+  }
+  .home-button {
+    font-size: 1.3rem;
+    padding: 0.9rem 1.8rem;
+  }
+}
+
+/* Up to 1024px (64em) */
+@media (max-width: 64em) {
+  .page-not-found h2 {
+    font-size: 5rem;
+  }
+  .page-not-found p {
+    font-size: 1.5rem;
+  }
+  .home-button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.6rem;
+  }
+}
+
+/* Up to 800px (50em) */
+@media (max-width: 50em) {
+  .page-not-found h2 {
+    font-size: 4rem;
+  }
+  .page-not-found p {
+    font-size: 1.3rem;
+  }
+  .home-button {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.4rem;
+  }
+}
+
+/* Up to 500px (31.25em) */
+@media (max-width: 31.25em) {
+  .page-not-found {
+    padding: 2rem;
+  }
+  .page-not-found h2 {
+    font-size: 3rem;
+  }
+  .page-not-found p {
+    font-size: 1.1rem;
+  }
+  .home-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
