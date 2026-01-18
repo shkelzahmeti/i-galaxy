@@ -39,6 +39,9 @@
   height: 5rem;
   border: 2px solid #ebebeb;
   background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ////////////////////////// */

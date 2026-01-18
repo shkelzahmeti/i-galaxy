@@ -88,11 +88,13 @@
 @media (max-width: 50em) {
   .section-repair {
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
     gap: 6rem;
   }
 
   .repair-text {
     grid-column: 1/-1;
+    grid-row: 2;
     text-align: center;
   }
 
@@ -106,6 +108,7 @@
 
   .cracked-phone {
     grid-column: 1/-1;
+    grid-row: 1;
     width: 70%; /* smaller phone */
     margin: 0 auto;
   }
