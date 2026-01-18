@@ -131,14 +131,17 @@
   font-size: 1.6rem;
   font-weight: 600;
   color: white;
-  background: #ff4040;
+  background: #3e3737;
   margin-bottom: 4rem;
   border: none;
   outline: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* ---- MEDIA QUERIES ---- */
+.product-display-right button:hover {
+  background: #ff4040;
+}
 
 /* ---- MEDIA QUERIES ---- */
 

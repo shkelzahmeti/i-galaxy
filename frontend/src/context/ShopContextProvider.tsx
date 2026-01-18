@@ -2,14 +2,11 @@
 // by wrapping later the `App` with `<ShopContextProvider` in `main.tsx`
 
 import { createContext, useEffect, useState, type ReactNode } from "react";
-// import allProducts from "../components/assets/allProducts";
 import type { Product } from "../types/product";
 
 type ShopContextType = {
   allProducts: Product[];
-  cartItems: {
-    [key: number]: number;
-  };
+  cartItems: { [key: number]: number };
   addToCart: (itemId: number) => void;
   removeFromCart: (itemId: number) => void;
   getTotalCartAmount: () => number;
@@ -22,11 +19,14 @@ type ShopContextProviderProps = {
   children: ReactNode;
 };
 
-// ADDED LATER (for add to cart):
 interface Cart {
   [key: number]: number;
 }
-const getDefaultCart = () => {
+
+const getDefaultCart = (): Cart => {
+  const storedCart = localStorage.getItem("cartItems");
+  if (storedCart) return JSON.parse(storedCart);
+
   const cart: Cart = {};
   for (let i = 0; i < 300; i++) {
     cart[i] = 0;
@@ -37,37 +37,46 @@ const getDefaultCart = () => {
 function ShopContextProvider({ children }: ShopContextProviderProps) {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Cart>(getDefaultCart());
-  console.log(cartItems);
 
-  // Added last:
   useEffect(() => {
     fetch("http://localhost:4000/allproducts")
       .then((res) => res.json())
-      .then((data) => {
-        setAllProducts(data);
-      });
+      .then((data) => setAllProducts(data))
+      .catch((err) => console.error("Failed to fetch products:", err));
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   const addToCart = (itemId: number): void => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    // We'll use these quantities to create our `Cart` page
-    console.log(cartItems);
-  };
-  const removeFromCart = (itemId: number): void => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    console.log(cartItems);
+    setCartItems((prev) => {
+      const updated = { ...prev, [itemId]: (prev[itemId] || 0) + 1 };
+      console.log("Added to cart:", updated);
+      return updated;
+    });
   };
 
-  const getTotalCartAmount = () =>
+  const removeFromCart = (itemId: number): void => {
+    setCartItems((prev) => {
+      const updated = {
+        ...prev,
+        [itemId]: Math.max((prev[itemId] || 0) - 1, 0),
+      };
+      console.log("Removed from cart:", updated);
+      return updated;
+    });
+  };
+
+  const getTotalCartAmount = (): number =>
     Object.entries(cartItems).reduce((total, [id, quantity]) => {
       const product = allProducts.find((p) => p.id === Number(id));
       return product ? total + product.newPrice * quantity : total;
     }, 0);
 
-  const getTotalCartItems = () =>
+  const getTotalCartItems = (): number =>
     Object.values(cartItems).reduce((total, quantity) => total + quantity, 0);
 
-  // Here I exported values to consume (in `Product` and `ProductDisplay`)
   const contextValue: ShopContextType = {
     allProducts,
     cartItems,
@@ -76,6 +85,7 @@ function ShopContextProvider({ children }: ShopContextProviderProps) {
     getTotalCartAmount,
     getTotalCartItems,
   };
+
   return (
     <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
   );
