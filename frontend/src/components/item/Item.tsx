@@ -5,7 +5,7 @@ import "./Item.css";
 type ItemProps = Product;
 // type ItemProps = Omit<Product, "id">;
 
-// Random item/card/phone that will be used in other components
+// Random item/card/phone that I will use in other components
 function Item({ id, image, name, newPrice, oldPrice }: ItemProps) {
   return (
     <article className="item">

@@ -17,11 +17,9 @@ function ListProduct() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   const fetchData = async () => {
-    await fetch("http://localhost:4000/allproducts")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllProducts(data);
-      });
+    const res = await fetch("http://localhost:4000/allproducts");
+    const data = await res.json();
+    setAllProducts(data);
   };
 
   useEffect(() => {
@@ -29,16 +27,25 @@ function ListProduct() {
   }, []);
 
   const handleRemoveProduct = async (id: number) => {
-    await fetch("http://localhost:4000/remove", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: id }),
-    });
-    toast.success("Product deleted");
-    await fetchData();
+    try {
+      const res = await fetch("http://localhost:4000/remove", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to delete product");
+      }
+
+      toast.success("Product deleted");
+      await fetchData();
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Something went wrong");
+    }
   };
 
   return (

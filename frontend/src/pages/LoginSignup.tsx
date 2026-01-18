@@ -38,28 +38,30 @@ function LoginSignup() {
     if (endPoint === "signup" && !formData.userName)
       return alert("Username is required");
 
-    let responseData!: SignupResponse;
-    await fetch(`http://localhost:4000/${endPoint}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/form-data",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        responseData = data;
+    try {
+      const res = await fetch(`http://localhost:4000/${endPoint}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-    if (responseData.success) {
-      localStorage.setItem("auth-token", responseData.token);
-      toast.success(
-        `You've ${endPoint === "login" ? "logged in" : "signed up"} successfully`,
-      );
-      navigate("/");
-    } else {
-      toast.error(responseData.errors);
+      const responseData: SignupResponse = await res.json();
+
+      if (responseData.success) {
+        localStorage.setItem("auth-token", responseData.token);
+        toast.success(
+          `You've ${endPoint === "login" ? "logged in" : "signed up"} successfully`,
+        );
+        navigate("/");
+      } else {
+        toast.error(responseData.errors);
+      }
+    } catch (err) {
+      console.error("Error during signup/login:", err);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 

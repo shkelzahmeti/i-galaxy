@@ -52,51 +52,52 @@ function AddProduct() {
       return alert("Please fill the fields and select your smartphone image");
     }
 
-    // Here I linked this `AddProduct` Page with my Backend
+    try {
+      // Here I linked this `AddProduct` Page with my Backend
 
-    // Uploading image to backend
-    let responseData: UploadResponse = { success: false, imageUrl: "" };
-    const product = { ...products };
-    const formData = new FormData();
-    if (!image) return console.error("No image selected");
-    formData.append("product", image);
-    await fetch("http://localhost:4000/upload", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        responseData = data;
+      // Uploading image to backend
+      let responseData: UploadResponse = { success: false, imageUrl: "" };
+      const product = { ...products };
+      const formData = new FormData();
+      if (!image) return console.error("No image selected");
+      formData.append("product", image);
+
+      const uploadRes = await fetch("http://localhost:4000/upload", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
       });
 
-    if (responseData.success) {
-      product.image = responseData.imageUrl;
-      console.log(product);
-      await fetch("http://localhost:4000/addproduct", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            setProducts(initialState);
-            setImage(null);
-            if (fileInputRef.current) {
-              fileInputRef.current.value = "";
-            }
-            // alert("Product added");
-            toast.success("Your product has been added");
-          } else
-            // alert("Failed");
-            toast.error("Failed to add product");
+      responseData = await uploadRes.json();
+
+      if (responseData.success) {
+        product.image = responseData.imageUrl;
+        console.log(product);
+
+        const addRes = await fetch("http://localhost:4000/addproduct", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(product),
         });
+
+        const data = await addRes.json();
+
+        if (data.success) {
+          setProducts(initialState);
+          setImage(null);
+          if (fileInputRef.current) fileInputRef.current.value = "";
+          // alert("Product added");
+          toast.success("Your product has been added");
+        } else {
+          // alert("Failed");
+          throw new Error("Failed to add product");
+        }
+      }
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Something went wrong");
     }
   };
 
