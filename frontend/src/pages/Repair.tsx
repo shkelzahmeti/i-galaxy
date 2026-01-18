@@ -7,7 +7,6 @@ import "./css/Repair.css";
 function Repair() {
   const [phoneSize, setPhoneSize] = useState({ width: 260, height: 480 });
 
-  // React-friendly way to update phone size on resize
   useEffect(() => {
     const updateSize = () => {
       const vw = window.innerWidth;
@@ -20,9 +19,9 @@ function Repair() {
       }
     };
 
-    updateSize(); // initial size
-    window.addEventListener("resize", updateSize); // listens safely
-    return () => window.removeEventListener("resize", updateSize); // cleanup
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   return (
