@@ -51,6 +51,50 @@
   font-weight: 500;
 }
 
+/* Select */
+.shopcategory-sort {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: 40px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shopcategory-sort:hover {
+  border-color: #555;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.shopcategory-sort-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* spacing between "Sort by:" and select */
+  font-weight: 500;
+}
+
+.shopcategory-sort-select {
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shopcategory-sort-select:hover {
+  border-color: #888;
+}
+
+.shopcategory-sort-select:focus {
+  outline: none;
+  border-color: #555;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
 /* ---- MEDIA QUERIES ---- */
 
 /* Up to 1280px */
@@ -88,7 +132,6 @@
   .shopcategory-banner {
     margin: 5rem auto;
     height: 16rem;
-
     padding-left: 2rem;
   }
   .shopcategory-index-sort {
@@ -105,6 +148,10 @@
   .shopcategory-sort {
     font-size: 1.3rem;
     padding: 0.8rem 1.5rem;
+  }
+  .shopcategory-sort-select {
+    font-size: 1.3rem;
+    padding: 0.4rem 0.8rem;
   }
   .shopcategory-index-sort p {
     font-size: 1.3rem;
@@ -130,6 +177,10 @@
   .shopcategory-sort {
     font-size: 1.2rem;
     padding: 0.6rem 1rem;
+  }
+  .shopcategory-sort-select {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.6rem;
   }
   .shopcategory-index-sort p {
     font-size: 1.2rem;

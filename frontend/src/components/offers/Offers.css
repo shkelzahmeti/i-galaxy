@@ -41,6 +41,12 @@
   font-weight: 500;
   margin-top: 3rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.offers-left button:hover {
+  background: #ff2222;
+  transform: translateY(-0.1rem);
 }
 
 .offers-right {

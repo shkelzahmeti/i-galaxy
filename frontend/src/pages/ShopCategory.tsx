@@ -1,6 +1,6 @@
 /// This component will be used for `iphone` and `galaxy` pages
 
-import { useContext, type JSX } from "react";
+import { useContext, useState, type JSX } from "react";
 import "./css/ShopCategory.css";
 import { ShopContext } from "../context/ShopContextProvider";
 import dropdown_icon from "../components/assets/dropdown_icon.png";
@@ -15,20 +15,50 @@ interface ShopCategoryProps {
 function ShopCategory({ category, banner }: ShopCategoryProps): JSX.Element {
   // Using data from the context
   const { allProducts } = useContext(ShopContext)!;
+
+  const [sortType, setSortType] = useState<"name" | "priceHigh" | "priceLow">(
+    "name",
+  );
+
+  const filteredProducts = allProducts.filter(
+    (item) => item.category === category,
+  );
+
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    if (sortType === "name") {
+      return a.name.localeCompare(b.name);
+    } else if (sortType === "priceHigh") {
+      return b.newPrice - a.newPrice;
+    } else {
+      return a.newPrice - b.newPrice;
+    }
+  });
+
   return (
     <section className="section-shopcategory">
       <img className="shopcategory-banner" src={banner} alt="" />
       <div className="shopcategory-index-sort">
         <p>
-          <span>Showing 1-12</span> out of 36 products
+          <span>Showing 1-12</span> out of {allProducts.length} products
         </p>
         <div className="shopcategory-sort">
-          Sort by <img src={dropdown_icon} alt="" />
+          <label className="shopcategory-sort-label">
+            Sort by:
+            <select
+              className="shopcategory-sort-select"
+              value={sortType}
+              onChange={(e) => setSortType(e.target.value as typeof sortType)}
+            >
+              <option value="name">Name</option>
+              <option value="priceHigh">Price: High to Low</option>
+              <option value="priceLow">Price: Low to High</option>
+            </select>
+          </label>
         </div>
       </div>
       {/* ////// */}
       <div className="shopcategory-products">
-        {allProducts.map((item: Product, i: number) => {
+        {sortedProducts.map((item: Product, i: number) => {
           if (category === item.category) {
             return (
               <Item
