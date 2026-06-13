@@ -1,4 +1,3 @@
-const port = 4000;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -7,14 +6,19 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const dns = require("node:dns/promises");
+
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
+require("dotenv").config();
+
+const port = process.env.PORT || 3000;
+const dbPassword = process.env.DB_PASS;
 
 app.use(express.json());
 app.use(cors());
 
 //Database connection with MongoDB:
 mongoose.connect(
-  "mongodb+srv://imshkelz_db_user:41oJiULBfv9kYnFA@cluster0.rbjwb9d.mongodb.net/i-galaxy",
+  `mongodb+srv://imshkelz_db_user:${dbPassword}@cluster0.rbjwb9d.mongodb.net/i-galaxy`,
 );
 
 //API Creation
