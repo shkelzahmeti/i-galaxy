@@ -6,14 +6,15 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const dns = require("node:dns/promises");
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 app.use(express.json());
 app.use(cors());
 
 //Database connection with MongoDB:
-
 mongoose.connect(
-  "mongodb+srv://imshkelz_db_user:8Rsv3Sej3I5hnOzI@cluster0.rbjwb9d.mongodb.net/i-galaxy",
+  "mongodb+srv://imshkelz_db_user:41oJiULBfv9kYnFA@cluster0.rbjwb9d.mongodb.net/i-galaxy",
 );
 
 //API Creation
