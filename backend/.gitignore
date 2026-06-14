@@ -10,7 +10,8 @@ yarn-error.log*
 dist/
 
 # Uploads (user-generated files)
-
+upload/
+upload/images/
 
 # OS junk
 .DS_Store
